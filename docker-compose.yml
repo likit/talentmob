@@ -1,0 +1,32 @@
+version: "3.4"
+services:
+  web:
+    build: .
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres
+    ports:
+      - "8000:8000"
+    volumes:
+      - type: bind
+        source: ./webapp
+        target: /usr/src/app"
+
+  postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=genius01
+    volumes:
+      - talentmob-data:/var/lib/postgresql/data
+    ports:
+      - "5443:5432"
+
+volumes:
+  talentmob-data:
+    external: true
+
+networks:
+  default:
+    external:
+      name: talentmob

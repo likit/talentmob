@@ -4,8 +4,6 @@ services:
     build: .
     depends_on:
       - postgres
-    links:
-      - postgres:postgres
     ports:
       - "8000:8000"
     volumes:

@@ -26,9 +26,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'wo=gk)y90f7$66ctogm-i_2n)(ps=ag04cd3)h806jw61co(#k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', True)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["128.199.140.163"]
 
 
 # Application definition
@@ -49,9 +49,9 @@ WSGI_APPLICATION = 'talentmobilis.wsgi.application'
 DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'talentmobcms',
-            'USER': 'postgres',
-            'PASSWORD': 'genius01',
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USERNAME'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
             'HOST': 'postgres',
             'PORT': '5432',
             }

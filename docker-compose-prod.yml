@@ -10,7 +10,7 @@ services:
       - "80:8000"
     volumes:
       - type: bind
-        source: ./webapp
+        source: ./mezzo
         target: /usr/src/app
     environment:
       - DEBUG

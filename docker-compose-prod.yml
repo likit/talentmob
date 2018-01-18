@@ -12,16 +12,13 @@ services:
       - type: bind
         source: ./mezzo
         target: /usr/src/app
-    environment:
-      - DEBUG
-      - DB_PASSWORD
-      - DB_USERNAME
-      - DB_NAME
+    env_file:
+      - web.env
 
   postgres:
     image: postgres
-    environment:
-      - POSTGRES_PASSWORD=genius01
+    env_file:
+      - postgres.env
     volumes:
       - talentmob-data:/var/lib/postgresql/data
     ports:

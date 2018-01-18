@@ -9,12 +9,13 @@ services:
     volumes:
       - type: bind
         source: ./webapp
-        target: /usr/src/app"
+        target: /usr/src/app
     environment:
-      - DEBUG
+      - DEBUG=1
       - DB_PASSWORD
       - DB_USERNAME
       - DB_NAME
+    command: bash -c "python manage.py runserver 0.0.0.0:8000"
 
   postgres:
     image: postgres

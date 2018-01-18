@@ -11,7 +11,7 @@ services:
     volumes:
       - type: bind
         source: ./webapp
-        target: /usr/src/app"
+        target: /usr/src/app
     environment:
       - DEBUG
       - DB_PASSWORD

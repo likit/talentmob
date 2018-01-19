@@ -1,4 +1,3 @@
-
 from __future__ import absolute_import, unicode_literals
 import os
 
@@ -140,20 +139,26 @@ FILE_UPLOAD_PERMISSIONS = 0o644
 # DATABASES #
 #############
 
+DB_NAME = os.environ.get('DB_NAME')
+DB_USERNAME = os.environ.get('DB_USERNAME')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
+DB_HOST = os.environ.get('DB_HOST')
+DB_PORT = os.environ.get('DB_PORT')
+
 DATABASES = {
     "default": {
         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         # DB name or path to database file if using sqlite3.
-        "NAME": "talentmobcms",
+        "NAME": DB_NAME,
         # Not used with sqlite3.
-        "USER": "postgres",
+        "USER": DB_USERNAME,
         # Not used with sqlite3.
-        "PASSWORD": "genius01",
+        "PASSWORD": DB_PASSWORD,
         # Set to empty string for localhost. Not used with sqlite3.
-        "HOST": "postgres",
+        "HOST": DB_HOST,
         # Set to empty string for default. Not used with sqlite3.
-        "PORT": "5432",
+        "PORT": DB_PORT,
     }
 }
 
@@ -198,6 +203,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
+            os.path.join(PROJECT_ROOT, "moderna/templates"),
             os.path.join(PROJECT_ROOT, "templates")
         ],
         "APP_DIRS": True,
@@ -247,6 +253,7 @@ INSTALLED_APPS = (
     "mezzanine.forms",
     "mezzanine.galleries",
     "mezzanine.twitter",
+    "moderna",
     # "mezzanine.accounts",
     # "mezzanine.mobile",
 )

@@ -7,20 +7,28 @@ DEBUG = True
 SECRET_KEY = "+)_ajyrm*ly2&zi#j(wr@hj22rw09rb1=c_er(7k6i7vt2vc2w"
 NEVERCACHE_KEY = "z4esa=3v-w*(jo%)c&qz(qzs2+1h==+(t^&@_4nch##lx66y$u"
 
+import os
+
+DB_NAME = os.environ.get('DB_NAME')
+DB_USERNAME = os.environ.get('DB_USERNAME')
+DB_PASSWORD = os.environ.get('DB_PASSWORD')
+DB_HOST = os.environ.get('DB_HOST')
+DB_PORT = os.environ.get('DB_PORT')
+
 DATABASES = {
     "default": {
         # Ends with "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
         "ENGINE": "django.db.backends.postgresql_psycopg2",
         # DB name or path to database file if using sqlite3.
-        "NAME": "talentmobcms",
+        "NAME": DB_NAME,
         # Not used with sqlite3.
-        "USER": "postgres",
+        "USER": DB_USERNAME,
         # Not used with sqlite3.
-        "PASSWORD": "genius01",
+        "PASSWORD": DB_PASSWORD,
         # Set to empty string for localhost. Not used with sqlite3.
-        "HOST": "postgres",
+        "HOST": DB_HOST,
         # Set to empty string for default. Not used with sqlite3.
-        "PORT": "5432",
+        "PORT": DB_PORT,
     }
 }
 
